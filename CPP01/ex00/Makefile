@@ -1,0 +1,38 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: abambi <abambi@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/01 10:13:12 by abambi            #+#    #+#              #
+#    Updated: 2021/11/05 22:45:13 by abambi           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME 		= ex00
+
+SRCS 		= main.cpp randomChump.cpp Zombie.cpp newZombie.cpp
+
+OBJ 		=	$(SRCS:.cpp=.o)
+
+CXX 		=	clang++
+
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
+
+RM			=	rm -rf
+
+.PHONY:		all clean fclean re
+
+all:		$(NAME)
+
+$(NAME):	$(OBJ) Makefile Zombie.hpp
+			$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+
+clean:
+			$(RM) $(OBJ)
+
+fclean:		clean
+			$(RM) $(NAME)
+
+re:			fclean all
